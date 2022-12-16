@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
               title: const Text('Students'),
               centerTitle: true,
             ),
-            body: const TabBarView(
+            body: TabBarView(
               children: [
                 CustomListView(isActivistsView: false),
                 CustomListView(isActivistsView: true),
