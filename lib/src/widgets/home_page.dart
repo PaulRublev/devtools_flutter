@@ -1,3 +1,4 @@
+// ignore: unused_import
 import 'package:devtools_flutter/src/network/album.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +36,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
             floatingActionButton: FloatingActionButton(onPressed: (() {
-              fetchAlbum();
+              // fetchAlbum(); // UNCOMMENT TO USE NETWORK FEATURES
             })),
           ),
         ),
