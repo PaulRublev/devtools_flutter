@@ -1,3 +1,4 @@
+import 'package:devtools_flutter/src/network/album.dart';
 import 'package:flutter/material.dart';
 
 import '../student.dart';
@@ -33,6 +34,9 @@ class HomePage extends StatelessWidget {
                 CustomListView(isActivistsView: true),
               ],
             ),
+            floatingActionButton: FloatingActionButton(onPressed: (() {
+              fetchAlbum();
+            })),
           ),
         ),
       ),
