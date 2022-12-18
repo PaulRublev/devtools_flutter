@@ -6,9 +6,8 @@ import 'students_list.dart';
 
 class CustomListView extends StatefulWidget {
   final bool isActivistsView;
-  List test = [];
 
-  CustomListView({super.key, required this.isActivistsView});
+  const CustomListView({super.key, required this.isActivistsView});
 
   @override
   State<CustomListView> createState() => _CustomListViewState();
@@ -28,6 +27,15 @@ class _CustomListViewState extends State<CustomListView> {
     return ListView.builder(
       itemCount: students.length,
       itemBuilder: (context, index) {
+        for (var i = 0; i < 1000; i++) {
+          Future<String> futureTask() async {
+            await Future.delayed(const Duration(hours: 5));
+            return 'Future complete';
+          }
+
+          final stream = Stream<String>.fromFuture(futureTask());
+          stream.listen(print, onDone: () => print('Done'), onError: print);
+        }
         return SizedBox(
           height: 90,
           child: ListTile(
@@ -42,12 +50,6 @@ class _CustomListViewState extends State<CustomListView> {
             trailing: Switch(
               value: students[index].isActivist,
               onChanged: (value) async {
-                for (var i = 0; i < 100000; i++) {
-                  widget.test.add(Future.delayed(const Duration(hours: 100))
-                      .then((value) => Theme.of(context)));
-                }
-                print(widget.test.length);
-
                 await showModalBottomSheet(
                   context: context,
                   builder: (context) =>
