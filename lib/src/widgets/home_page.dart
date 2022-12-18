@@ -10,6 +10,10 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   final List<Student> studentsList = List.castFrom(students);
+  final _isNetworkOn = const bool.fromEnvironment(
+    'network_on',
+    defaultValue: false,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +40,9 @@ class HomePage extends StatelessWidget {
               ],
             ),
             floatingActionButton: FloatingActionButton(onPressed: (() {
-              // fetchAlbum(); // UNCOMMENT TO USE NETWORK FEATURES
+              if (_isNetworkOn) {
+                fetchAlbum();
+              }
             })),
           ),
         ),
